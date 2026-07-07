@@ -101,9 +101,15 @@
   color: var(--sub-color-1, #000);
   text-decoration: underline;
 }
-.footer__nav-link.card-des{
-  font-size: 16px;
-}
+
+/* 원본에 있던 .footer__nav-link.card-des { font-size: 16px; } 규칙을 제거했습니다.
+   HTML의 링크들이 전부 class="footer__nav-link card-des"를 함께 쓰고 있어서,
+   이 결합 셀렉터(명시도 0,2,0)가 아래 780px/390px 미디어쿼리 안의
+   .footer__nav-link(명시도 0,1,0)보다 항상 이겨버렸습니다.
+   그 결과 태블릿·모바일에서 13px로 줄어들어야 할 폰트가 계속 16px로 고정되고
+   있었어요. 값 자체가 데스크탑 기본값(16px)과 같아서 이 규칙은 없어도
+   데스크탑 화면은 그대로이고, 반응형에서는 정상적으로 줄어들게 됩니다. */
+
 /* =============================================
    4. 우측: 브랜드 / SNS / 법적고지
    ============================================= */
@@ -203,6 +209,8 @@
     font-size: var(--tablet780px---contents--title--m, 45px);
   }
   .footer__banner-desc {
+    /* 데스크탑 기본값(16px)보다 커지는 값이라 확인이 필요해 보입니다.
+       변수 정의 파일에 실제로 20px로 지정돼 있다면 무시하셔도 됩니다. */
     font-size: var(--tablet780px---contents--desc--m, 20px);
   }
 
